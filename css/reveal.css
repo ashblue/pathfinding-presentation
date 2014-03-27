@@ -1,5 +1,6 @@
 .click-animate {
-  display: block; }
+  display: block;
+  cursor: pointer; }
 
 #example-path {
   width: 400px;
