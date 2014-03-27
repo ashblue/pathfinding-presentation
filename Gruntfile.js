@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 				banner: '<%= meta.banner %>\n'
 			},
 			build: {
-				src: 'js/reveal.js',
+				src: ['js/reveal.js', 'js/custom/*'],
 				dest: 'js/reveal.min.js'
 			}
 		},
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			main: {
-				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css' ],
+				files: [ 'Gruntfile.js', 'js/reveal.js', 'js/custom/*', 'css/reveal.css' ],
 				tasks: 'default'
 			},
 			theme: {

@@ -1,0 +1,126 @@
+@import 'mixins';
+
+.click-animate {
+  display: block;
+}
+
+#example-path {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  padding: 20px;
+  margin: 0 auto;
+
+  * {
+    position: absolute;
+    display: block;
+    background: #000;
+  }
+
+  .line {
+    width: 100px;
+    height: 2px;
+    background: #0f0;
+    bottom: 40px;
+    width: 280px;
+
+    &.b {
+      width: 2px;
+      height: 150px;
+      left: 300px;
+    }
+
+    &.c {
+      left: 300px;
+      bottom: 190px;
+      width: 100px;
+    }
+  }
+
+  .square {
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+
+    &.alt {
+      top: auto;
+      left: auto;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .circle {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    background: #00f;
+
+    &.main {
+      z-index: 1;
+    }
+
+    &.default {
+      background: #ccc;
+      z-index: 0;
+    }
+
+    &.alt {
+      background: #f00;
+      top: 20px;
+      right: 20px;
+      bottom: 0;
+    }
+  }
+
+  &.active {
+    .circle.main {
+      @include animation(movePath, 5s, 1);
+      bottom: 170px;
+      left: 370px;
+    }
+  }
+}
+
+.reveal {
+  .img-caption {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    img {
+      margin-bottom: 0;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      font-size: 30px;
+    }
+  }
+}
+
+
+@include keyframes(movePath) {
+  0% {
+    bottom: 20px;
+    left: 20px;
+  }
+  33% {
+    bottom: 20px;
+    left: 280px;
+  }
+  66% {
+    bottom: 170px;
+    left: 290px;
+  }
+  100% {
+    bottom: 170px;
+    left: 370px;
+  }
+};

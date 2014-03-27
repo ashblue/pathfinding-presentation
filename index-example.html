@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>A* Pathfinding for JavaScript</title>
+		<title>reveal.js - The HTML Presentation Framework</title>
 
-		<meta name="description" content="An overview of how A* pathfinding works and how to implement it into any JavaScript project">
-		<meta name="author" content="Ash Blue">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -43,75 +43,23 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>A* Pathfinding</h1>
-					<h3>For JavaScript and Beyond</h3>
+					<h1>Reveal.js</h1>
+					<h3>HTML Presentations Made Easy</h3>
 					<p>
-						<small>
-                            By <a href="http://blueashes.com">Ash Blue</a> /
-                            <a href="http://clevercg.com">Clever Crow Games</a> /
-                            <a href="http://www.manning.com/crowther2/">HTML5 in Action</a> /
-                            <a href="http://twitter.com/ashbluewd">@ashbluewd</a>
-                        </small>
+						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
 					</p>
 				</section>
 
-                <section>
-                    <section>
-                        <h2>What is AI pathfinding?</h2>
-                        <p>Process of discovering a path through obstacles <br/> between two points</p>
-
-                        <div id="example-path" class="click-animate">
-                            <div class="line a"></div>
-                            <div class="line b"></div>
-                            <div class="line c"></div>
-
-                            <div class="square"></div>
-                            <div class="square alt"></div>
-
-                            <div class="circle default"></div>
-                            <div class="circle main"></div>
-                            <div class="circle alt"></div>
-
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2>Just for games?</h2>
-                        <p>No! Pathfinding is important for building complex HTML5 apps</p>
-
-                        <div class="img-caption">
-                            <img width="300" height="300" src="assets/google-maps.jpg" />
-                            <span style="max-width: 300px;">Fastet Route</span>
-                        </div>
-
-                        <div class="img-caption">
-                            <img width="300" height="300" src="assets/get-resources.jpg" />
-                            <span style="max-width: 300px;">Acquire Resources</span>
-                        </div>
-
-                        <div class="img-caption">
-                            <img width="300" height="300" src="assets/robotics-engineering.jpg" />
-                            <span style="max-width: 300px;">Robotics Engineering</span>
-                        </div>
-                    </section>
-                </section>
-
 				<section>
-                    <section>
-                        <h2>Popular Pathfinding Algorithms</h2>
-                        <ul>
-                            <li>Brute Force</li>
-                            <li>Dijkstra</li>
-                            <li>A*</li>
-                        </ul>
+					<h2>Heads Up</h2>
+					<p>
+						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
+						support for CSS 3D transforms to see it in its full glory.
+					</p>
 
-                        <h3>Honorable Mention</h3>
-                        <ul>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                        </ul>
-                    </section>
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -409,7 +357,6 @@ function linkify( selector ) {
 
 		</div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 

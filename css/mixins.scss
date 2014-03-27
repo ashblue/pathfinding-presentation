@@ -1,0 +1,22 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($name, $duration, $loop) {
+  -webkit-animation: $name $duration $loop; /* Safari 4+ */
+  -moz-animation:    $name $duration $loop; /* Fx 5+ */
+  -o-animation:      $name $duration $loop; /* Opera 12+ */
+  animation:         $name $duration $loop; /* IE 10+ */
+}
+
