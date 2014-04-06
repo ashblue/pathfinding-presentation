@@ -81,7 +81,7 @@
 
                         <div class="img-caption">
                             <img width="300" height="300" src="assets/google-maps.jpg" />
-                            <span style="max-width: 300px;">Fastet Route</span>
+                            <span style="max-width: 300px;">Fastest Route</span>
                         </div>
 
                         <div class="img-caption">
@@ -110,13 +110,968 @@
                     <section>
                         <h2>A* (Golden Solution)</h2>
                         <ul>
-                            <li>Flexible problem solving</li>
-                            <li>Fast execution times</li>
+                            <li>Customizable</li>
+                            <li>Fast</li>
                             <li>Reusable</li>
-                            <li>Small code base</li>
+                            <li>Minimal code</li>
                         </ul>
                     </section>
 				</section>
+
+                <section>
+                    <section>
+                        <h2>A* In Action</h2>
+
+                        <p>Get our hero to the treasure with the shortest path</p>
+                        <small>(click to move)</small>
+
+                        <div class="pathfinder">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Break Map Into Voxels</h2>
+                        <ul>
+                            <li>Use largest blocks possible</li>
+                            <li>Small voxels hurt performance</li>
+                        </ul>
+
+                        <div class="pathfinder grid">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Identify Tile Types</h2>
+                        <ul>
+                            <li>Identify blockers</li>
+                            <li>Get walkable tiles with cost</li>
+                            <!-- @TODO Move this into a nice graphic that can be toggled on and off via class on the grid -->
+                            <li>Transparent = open, black = blocked, water = blue, start = green, end = red</li>
+                        </ul>
+
+                        <div class="pathfinder grid type">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Count Steps</h2>
+                        <ul>
+                            <li>A* steps examines 1 tile at a time with neighbors (step)</li>
+                            <li>Lower step count prioritized</li>
+                        </ul>
+
+                        <!-- @TODO Include tile direction graphics -->
+                        <!-- @TODO Hide open / closed -->
+                        <div class="pathfinder history grid type show-step">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Distance Heuristics</h2>
+                        <ul>
+                            <li>Estimates distance to goal</li>
+                            <li>Manhattan or Euclidean?</li>
+                            <li>Demo uses Manhattan for speed</li>
+                        </ul>
+
+                        <pre><code data-trim contenteditable>
+function euclidean (xC, yC, xT, yT) {
+    var dx = xT - xC, dy = yT - yC;
+    return Math.sqrt((dx * dx) + (dy * dy));
+}
+
+function manhattan (xC, yC, xT, yT) {
+    var dx = Math.abs(xT - xC), dy = Math.abs(yT - yC);
+    return dx + dy;
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Heuristic in Action</h2>
+
+                        <div class="pathfinder history grid type show-heuristic">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Open and Closed Sets</h2>
+                        <!-- @TODO Highlight open and closed with proper colors -->
+                        <ul>
+                            <li>Open (green): Yet to be evaluated</li>
+                            <li>Closed (red): Evaluated tile</li>
+                            <li>A* Always chooses best open</li>
+                            <li>Best open found through heuristic + step cost</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Putting Everything Together</h2>
+
+                        <!-- @TODO Activate open and closed here -->
+                        <div class="pathfinder history grid type show-stats">
+                            <div class="matrix">
+                                <div class="row">
+                                    <div data-x="0" data-y="0" class="voxel"></div>
+                                    <div data-x="1" data-y="0" class="voxel"></div>
+                                    <div data-x="2" data-y="0" class="voxel"></div>
+                                    <div data-x="3" data-y="0" class="voxel"></div>
+                                    <div data-x="4" data-y="0" class="voxel"></div>
+                                    <div data-x="5" data-y="0" class="voxel" data-pos="end"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="1" class="voxel"></div>
+                                    <div data-x="1" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="1" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="1" class="voxel"></div>
+                                    <div data-x="4" data-y="1" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="1" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="2" class="voxel"></div>
+                                    <div data-x="1" data-y="2" class="voxel"></div>
+                                    <div data-x="2" data-y="2" class="voxel"></div>
+                                    <div data-x="3" data-y="2" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="4" data-y="2" class="voxel" data-cost="2"></div>
+                                    <div data-x="5" data-y="2" class="voxel"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="3" class="voxel alt" data-cost="0"></div>
+                                    <div data-x="1" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="2" data-y="3" class="voxel"></div>
+                                    <div data-x="3" data-y="3" class="voxel" data-cost="0"></div>
+                                    <div data-x="4" data-y="3" class="voxel"></div>
+                                    <div data-x="5" data-y="3" class="voxel" data-cost="0"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="4" class="voxel"></div>
+                                    <div data-x="1" data-y="4" class="voxel" data-pos="start"><span class="player"></span></div>
+                                    <div data-x="2" data-y="4" class="voxel"></div>
+                                    <div data-x="3" data-y="4" class="voxel"></div>
+                                    <div data-x="4" data-y="4" class="voxel"></div>
+                                    <div data-x="5" data-y="4" class="voxel" data-cost="2"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div data-x="0" data-y="5" class="voxel"></div>
+                                    <div data-x="1" data-y="5" class="voxel"></div>
+                                    <div data-x="2" data-y="5" class="voxel" data-cost="0"></div>
+                                    <div data-x="3" data-y="5" class="voxel"></div>
+                                    <div data-x="4" data-y="5" class="voxel"></div>
+                                    <div data-x="5" data-y="5" class="voxel"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Map API</h2>
+                        <ul>
+                            <li>Abstracts map data from pathfinder</li>
+                            <li>Most A* customization happens here</li>
+                            <li>Using John Resig's <a href="http://ejohn.org/blog/simple-javascript-inheritance/">Simple JavaScript Inheritance</a> for instances</li>
+                        </ul>
+
+                        <h3>Primary Methods</h3>
+                        <ol>
+                            <li>setMap</li>
+                            <li>outOfBounds</li>
+                            <li>getNeighbors</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h2>setMap</h2>
+                        <ul>
+                            <li>Break map down to voxels</li>
+                            <li>HTML/CSS users loop through data via jQuery</li>
+                            <li>Complex games require multiple maps (collision, entities, other)</li>
+                        </ul>
+
+                        <p>Image of demo map pointing to an array of equivalent data</p>
+
+<pre><code data-trim>
+window.Map = window.Class.extend({
+    init: function (mapData) {
+        this.mapData = mapData;
+    },
+    ...
+});
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>OutOfBounds</h2>
+                        <ul>
+                            <li>Check for overflowing indices on map data</li>
+                            <li>Prevents errors from crashing the app</li>
+                        </ul>
+
+<pre><code data-trim>
+window.Map = window.Class.extend({
+    ...
+    outOfBounds: function (x, y) {
+        return x < 0 || x >= this.data[0].length ||
+        y < 0 || y >= this.data.length;
+    },
+    ...
+});
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>GetNeighbors</h2>
+                        <ul>
+                            <li>Find all open adjacent tiles</li>
+                            <li>Tweak for diagonal by returning corners here</li>
+                            <li>Add 3D z-index by returning tiles above and below</li>
+                        </ul>
+
+<pre><code data-trim>
+window.Map = window.Class.extend({
+    ...
+    getNeighbors: function (x, y) {
+        var neighbors = [];
+
+        // Check top, right, bottom, left (clockwise)
+        if (!this.blocked(x, y - 1)) neighbors.push(new window.Tile(x, y - 1));
+        if (!this.blocked(x + 1, y)) neighbors.push(new window.Tile(x + 1, y));
+        if (!this.blocked(x, y + 1)) neighbors.push(new window.Tile(x, y + 1));
+        if (!this.blocked(x - 1, y)) neighbors.push(new window.Tile(x - 1, y));
+
+        return neighbors;
+    },
+    ...
+});
+</code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Completed Map</h2>
+
+                        <pre><code data-trim>
+window.Map = window.Class.extend({
+    data: null, // Current map
+
+    init: function (data) {
+        this.data = data;
+    },
+
+    outOfBounds: function (x, y) {
+        return x < 0 || x >= this.data[0].length ||
+            y < 0 || y >= this.data.length;
+    },
+
+    getWidthInTiles: function () {
+        return this.data[0].length;
+    },
+
+    getHeightInTiles: function () {
+        return this.data.length;
+    },
+
+    blocked: function (x, y) {
+        if (this.outOfBounds(x, y)) {
+            return true;
+        }
+
+        if (this.data[y][x] === 0) {
+            return true;
+        }
+
+        return false;
+    },
+
+    getNeighbors: function (x, y) {
+        var neighbors = [];
+
+        if (!this.blocked(x, y - 1)) neighbors.push(new window.Tile(x, y - 1));
+        if (!this.blocked(x + 1, y)) neighbors.push(new window.Tile(x + 1, y));
+        if (!this.blocked(x, y + 1)) neighbors.push(new window.Tile(x, y + 1));
+        if (!this.blocked(x - 1, y)) neighbors.push(new window.Tile(x - 1, y));
+
+        return neighbors;
+    },
+
+
+    getCost: function (xC, yC, xT, yT) {
+        return this.data[yT][xT];
+    }
+});
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pathfinder API</h2>
+                        <ul>
+                            <li>Navigates through map data</li>
+                            <li>Each creature will need its own pathfinder</li>
+                            <li>Returns a completed path that can be navigated</li>
+                        </ul>
+
+                        <h3>Primary Topics</h3>
+                        <ol>
+                            <li>Close commands</li>
+                            <li>Open commands</li>
+                            <li>findPath Walkthrough</li>
+                            <li>Assembling a path</li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h2>Close Commands</h2>
+
+                        <p>Simple interface to manage adding and removing closed tiles</p>
+
+                        <pre><code data-trim>
+window.PathFinder = window.Class.extend({
+    ...
+    // New closed tile
+    addClosed: function (step) {
+        this.addHistory(step, 'closed');
+        this.closed.push(step);
+        return this;
+    },
+
+    // Remove existing closed tile
+    inClosed: function (step) {
+        for (var i = 0; i < this.closed.length; i++) {
+            if (this.closed[i].x === step.x && this.closed[i].y === step.y)
+                return this.closed[i];
+        }
+
+        return false;
+    },
+    ...
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Open Commands</h2>
+
+                        <p>Used to store and analyze group data</p>
+
+                        <pre><code data-trim>
+window.PathFinder = window.Class.extend({
+    ...
+    // Adds a new tile
+    addOpen: function (step) {
+        this.open.push(step);
+        return this;
+    },
+
+    // Removes an existing tile
+    removeOpen: function (step) {
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i] === step) this.open.splice(i, 1);
+        }
+        return this;
+    },
+
+    // Check if the step is already in the open set
+    inOpen: function (step) {
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i].x === step.x && this.open[i].y === step.y)
+                return this.open[i];
+        }
+
+        return false;
+    },
+
+    // Get the best possible tile from the open set
+    getBestOpen: function () {
+        var bestI = 0;
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i].f < this.open[bestI].f) bestI = i;
+        }
+
+        return this.open[bestI];
+    },
+    ...
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>findPath Walkthrough</h2>
+
+                        <p>This walks through the map API data finds a walkable path</p>
+
+                        <pre><code data-trim>
+window.PathFinder = window.Class.extend({
+    ...
+    findPath: function (xC, yC, xT, yT) {
+        var current, // Current best open tile
+            neighbors, // Dump of all nearby neighbor tiles
+            neighborRecord, // Any pre-existing records of a neighbor
+            stepCost, // Dump of a total step score for a neighbor
+            i;
+
+        // You must add the starting step
+        this.reset()
+            .addOpen(new window.Step(xC, yC, xT, yT, this.step, false));
+
+        while (this.open.length !== 0) {
+            this.step++;
+            current = this.getBestOpen();
+
+            // Check if goal has been discovered to build a path
+            if (current.x === xT && current.y === yT) {
+                return this.buildPath(current, []);
+            }
+
+            // Move current into closed set
+            this.removeOpen(current)
+                .addClosed(current);
+
+            // Get neighbors from the map and check them
+            neighbors = this.map.getNeighbors(current.x, current.y);
+            for (i = 0; i < neighbors.length; i++) {
+                this.step++;
+
+                // Get current step and distance from current to neighbor
+                stepCost = current.g + this.map.getCost(current.x, current.y, neighbors[i].x, neighbors[i].y);
+
+                // Check for the neighbor in the closed set
+                // then see if its cost is >= the stepCost, if so skip current neighbor
+                neighborRecord = this.inClosed(neighbors[i]);
+                if (neighborRecord && stepCost >= neighborRecord.g)
+                    continue;
+
+                // Verify neighbor doesn't exist or new score for it is better
+                neighborRecord = this.inOpen(neighbors[i]);
+                if (!neighborRecord || stepCost < neighborRecord.g) {
+                    if (!neighborRecord) {
+                        this.addOpen(new window.Step(neighbors[i].x, neighbors[i].y, xT, yT, stepCost, current));
+                    } else {
+                        neighborRecord.parent = current;
+                        neighborRecord.g = stepCost;
+                        neighborRecord.f = stepCost + neighborRecord.h;
+                    }
+                }
+            }
+        }
+
+        return false;
+    },
+    ...
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Assembling a path</h2>
+
+                        <p>Put together a walkable path from the <em>findPath</em> method's closed set data</p>
+
+                        <pre><code data-trim>
+window.PathFinder = window.Class.extend({
+    ...
+    // Recursive path building method
+    buildPath: function (tile, stack) {
+        stack.push(tile);
+
+        // Look at every parent and step back until no parents are left
+        if (tile.parent) {
+            return this.buildPath(tile.parent, stack);
+        } else {
+            return stack;
+        }
+    },
+    ...
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Completed Pathfinder</h2>
+
+                        <pre><code data-trim>
+window.PathFinder = window.Class.extend({
+    map: null, // Map class reference
+    closed: null, // Taken steps
+    open: null, // Available steps that can be taken
+    history: null,
+    step: 0, // Step count
+    maxSearchDistance: 100, // Maximum number of steps that can be taken before shutting down a closed path
+
+    init: function (map) {
+        this.closed = [];
+        this.open = [];
+        this.history = [];
+        this.map = map;
+    },
+
+    addOpen: function (step) {
+        this.addHistory(step, 'open');
+        this.open.push(step);
+        return this;
+    },
+
+    // Remove a step that already exists by object memory address (not actual x and y values)
+    removeOpen: function (step) {
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i] === step) this.open.splice(i, 1);
+        }
+        return this;
+    },
+
+    // Check if the step is already in the open set
+    inOpen: function (step) {
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i].x === step.x && this.open[i].y === step.y)
+                return this.open[i];
+        }
+
+        return false;
+    },
+
+    // Get the lowest costing tile in the open set
+    getBestOpen: function () {
+        var bestI = 0;
+        for (var i = 0; i < this.open.length; i++) {
+            if (this.open[i].f < this.open[bestI].f) bestI = i;
+        }
+
+        return this.open[bestI];
+    },
+
+    addClosed: function (step) {
+        this.addHistory(step, 'closed');
+        this.closed.push(step);
+        return this;
+    },
+
+    // Check if the step is already in the closed set
+    inClosed: function (step) {
+        for (var i = 0; i < this.closed.length; i++) {
+            if (this.closed[i].x === step.x && this.closed[i].y === step.y)
+                return this.closed[i];
+        }
+
+        return false;
+    },
+
+    addHistory: function (step, group) {
+        this.history.push({
+            step: step,
+            group: group
+        });
+    },
+
+    findPath: function (xC, yC, xT, yT) {
+        var current, // Current best open tile
+            neighbors, // Dump of all nearby neighbor tiles
+            neighborRecord, // Any pre-existing records of a neighbor
+            stepCost, // Dump of a total step score for a neighbor
+            i;
+
+        // You must add the starting step
+        this.reset()
+            .addOpen(new window.Step(xC, yC, xT, yT, this.step, false));
+
+        while (this.open.length !== 0) {
+            this.step++;
+            current = this.getBestOpen();
+
+            // Check if goal has been discovered to build a path
+            if (current.x === xT && current.y === yT) {
+                return this.buildPath(current, []);
+            }
+
+            // Move current into closed set
+            this.removeOpen(current)
+                .addClosed(current);
+
+            // Get neighbors from the map and check them
+            neighbors = this.map.getNeighbors(current.x, current.y);
+            for (i = 0; i < neighbors.length; i++) {
+                this.step++;
+
+                // Get current step and distance from current to neighbor
+                stepCost = current.g + this.map.getCost(current.x, current.y, neighbors[i].x, neighbors[i].y);
+
+                // Check for the neighbor in the closed set
+                // then see if its cost is >= the stepCost, if so skip current neighbor
+                neighborRecord = this.inClosed(neighbors[i]);
+                if (neighborRecord && stepCost >= neighborRecord.g)
+                    continue;
+
+                // Verify neighbor doesn't exist or new score for it is better
+                neighborRecord = this.inOpen(neighbors[i]);
+                if (!neighborRecord || stepCost < neighborRecord.g) {
+                    if (!neighborRecord) {
+                        this.addOpen(new window.Step(neighbors[i].x, neighbors[i].y, xT, yT, stepCost, current));
+                    } else {
+                        neighborRecord.parent = current;
+                        neighborRecord.g = stepCost;
+                        neighborRecord.f = stepCost + neighborRecord.h;
+                    }
+                }
+            }
+        }
+
+        return false;
+    },
+
+    // Recursive path buliding method
+    buildPath: function (tile, stack) {
+        stack.push(tile);
+
+        if (tile.parent) {
+            return this.buildPath(tile.parent, stack);
+        } else {
+            return stack;
+        }
+    },
+
+    reset: function () {
+        this.closed = [];
+        this.open = [];
+        return this;
+    }
+});
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pathfinding with gravity</h2>
+
+                        <p>For use with platformers and other games requiring gravity</p>
+
+                        <ul>
+                            <li>JavaScript library: xxx</li>
+                            <li>Currently used for <a href="http://playadnc.com">A Dragon Named Coal's</a> companion system</li>
+                        </ul>
+
+                        <p>IMAGE HERE OF PATHFINDING DEBUGGER WITH GRAVITY</p>
+                    </section>
+
+                    <section>
+                        <h2>Clearance values</h2>
+
+                        <p>For when moving characters takes up more than one tile<br/>
+                        URL HERE</p>
+
+                        <p>IMAGE OF CLEARANCE DEBUG FROM ADNC GRAVITY</p>
+
+                    </section>
+
+                    <section>
+                        <h2>Boxed JS pathfinding solutions</h2>
+
+                        <p>Not many solutions out there yet. Most are weekend hack projects (not maintained). These are two of the best.</p>
+
+                        <ul>
+                            <li><a href="http://www.easystarjs.com/">EasyStar</a></li>
+                            <li><a href="http://qiao.github.io/PathFinding.js/visual/">PathFinding.js</a></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>More learning resources</h2>
+
+                        <ul>
+                            <li>ITEMS EHRE</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Any Questions?</h2>
+
+                    <ul>
+                        <li>Stay in contact: @ashbluewd</li>
+                        <li>Get the slides: SHORT_URL_HERE</li>
+                    </ul>
+                </section>
+
 
 				<!-- Example of nested vertical slides -->
 				<section>

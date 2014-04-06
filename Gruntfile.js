@@ -24,7 +24,8 @@ module.exports = function(grunt) {
 				banner: '<%= meta.banner %>\n'
 			},
 			build: {
-				src: ['js/reveal.js', 'js/custom/*'],
+				src: ['js/reveal.js', 'js/custom/*',
+                    'js/map/models/*', 'js/map/controllers/*', 'js/map/main.js'],
 				dest: 'js/reveal.min.js'
 			}
 		},

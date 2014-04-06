@@ -1,0 +1,157 @@
+.pathfinder {
+  border-top: 1px solid #000;
+  padding-top: 20px !important;
+  margin-top: 20px !important;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+
+  .matrix {
+    max-width: 480px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  &.grid {
+    .voxel {
+      outline: 1px solid #2DEBAE;
+    }
+  }
+
+  &.type {
+    .voxel {
+      &[data-pos]:after,
+      &[data-cost]:after {
+        opacity: 0.3;
+      }
+
+      &[data-pos="start"]:after {
+        background: #0f0;
+      }
+
+      &[data-pos="end"]:after {
+        background: #f00;
+      }
+
+      &[data-cost="2"]:after {
+        background: #00f;
+      }
+
+      &[data-cost="0"]:after {
+        background: #000;
+      }
+    }
+  }
+
+  &.show-stats {
+    .stat {
+      display: block;
+    }
+  }
+
+  &.show-heuristic {
+    .stat.heuristic {
+      display: block;
+    }
+  }
+
+  &.show-step {
+    .stat.step {
+      display: block;
+    }
+  }
+
+  .stat {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    font-size: 16px;
+
+
+    &.total {
+      top: 5px;
+      left: 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &.heuristic {
+      right: 5px;
+      top: 28px;
+    }
+
+    &.step {
+      left: 5px;
+      top: 28px;
+    }
+  }
+
+  .row {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  .voxel {
+    width: 80px;
+    height: 80px;
+
+    display: block;
+    float: left;
+    position: relative;
+    z-index: 0;
+
+    &[data-pos]:after,
+    &[data-cost]:after,
+    &[data-pos]:before,
+    &[data-cost]:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .player {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-image: url('../assets/map/coal.png');
+      background-size: cover;
+    }
+
+    &[data-pos="end"] {
+      background-image: url('../assets/map/chest.png');
+      background-size: cover;
+    }
+
+    &[data-cost="0"] {
+      background-image: url('../assets/map/rock.png');
+      background-size: cover;
+
+      &.alt {
+        background-image: url('../assets/map/rose-bush.png');
+      }
+    }
+
+    &[data-cost="2"] {
+      background-image: url('../assets/map/water.png');
+      background-size: cover;
+    }
+
+    &.closed {
+      outline: 3px solid #f00 !important;
+      outline-offset: -3px;
+    }
+
+    &.open {
+      outline: 3px solid #0f0 !important;
+      outline-offset: -3px;
+    }
+  }
+}
