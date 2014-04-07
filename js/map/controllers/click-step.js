@@ -55,9 +55,15 @@ $(document).ready(function () {
             var tile = this.stack[this.index].step;
             var group = this.stack[this.index].group;
             var $tile = this.getTile(tile.x, tile.y);
+            var direction = '';
 
             // Delete all contents except player span
             $tile.children().not('.player').detach();
+
+
+            if (tile.direction) {
+                direction = tile.direction;
+            }
 
             // Inject direction, open/closed, step cost, heuristic cost, total
             $tile.removeClass('open')
@@ -66,8 +72,8 @@ $(document).ready(function () {
                 .addClass(tile.direction)
                 .append('<span class="stat step">' + tile.g + '</span> ' +
                     '<span class="stat heuristic">' + tile.h + '</span> ' +
-                    '<span class="stat total">' + tile.f + '</span>');
-
+                    '<span class="stat total">' + tile.f + '</span>' +
+                    '<span class="direction ' + direction + '">' + direction + '</span>');
 
             this.index += 1;
         }

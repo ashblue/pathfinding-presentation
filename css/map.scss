@@ -6,9 +6,16 @@
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;
+  position: relative;
+
+  &.hide-group {
+    .voxel.open, .voxel.closed {
+      outline-color: #ff0 !important;
+    }
+  }
 
   .matrix {
-    max-width: 480px;
+    max-width: 420px;
     margin: 0 auto;
     cursor: pointer;
   }
@@ -96,8 +103,8 @@
   }
 
   .voxel {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 
     display: block;
     float: left;
@@ -153,5 +160,77 @@
       outline: 3px solid #0f0 !important;
       outline-offset: -3px;
     }
+  }
+
+  .direction {
+    text-indent: -9999px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+
+
+    &.north {
+      background-image: url('../assets/map/north.png');
+    }
+
+    &.west {
+      background-image: url('../assets/map/west.png');
+    }
+
+    &.east {
+      background-image: url('../assets/map/east.png');
+    }
+
+    &.south {
+      background-image: url('../assets/map/south.png');
+    }
+  }
+}
+
+.map-key {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: 280px !important;
+
+
+  span {
+    font-size: 10px;
+    display: block;
+    text-align: left;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      left: -30px;
+      top: 10px;
+      position: absolute;
+    }
+  }
+
+  .blocked:before {
+    background: #000;
+  }
+
+  .open:before {
+    background: #fff;
+  }
+
+  .water:before {
+    background: #00f;
+  }
+
+  .start:before {
+    background: #0f0;
+  }
+
+  .end:before {
+    background: #f00;
   }
 }

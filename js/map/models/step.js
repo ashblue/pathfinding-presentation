@@ -12,12 +12,13 @@ $(document).ready(function () {
             return dx + dy;
         },
 
+
         getDirection: function (x1, y1, x2, y2) {
             var result;
 
             if (x1 > x2) {
                 result = 'west';
-            } else if (x1 > x2) {
+            } else if (x1 < x2) {
                 result = 'east';
             } else if (y1 > y2) {
                 result = 'north';
