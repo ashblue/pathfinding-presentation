@@ -101,8 +101,8 @@
                         <h2>Popular Pathfinding Algorithms</h2>
                         <ul>
                             <li>Brute Force</li>
+                            <li>Monte Carlo</li>
                             <li>Dijkstra</li>
-                            <li>A*</li>
                             <li><a href="http://en.wikipedia.org/wiki/Pathfinding">Many others</a></li>
                         </ul>
                     </section>
@@ -327,7 +327,7 @@
                         <h2>Count Steps</h2>
                         <ul>
                             <li>A* steps examines 1 tile at a time with neighbors (step)</li>
-                            <li>Lower step count prioritized</li>
+                            <li>Lower step count / distance prioritized</li>
                         </ul>
 
                         <div class="pathfinder history grid type show-step hide-group">
@@ -413,6 +413,11 @@ function manhattan (xC, yC, xT, yT) {
                     <section>
                         <h2>Heuristic in Action</h2>
 
+                        <ul>
+                            <li>Displayed value is estimated distance to target</li>
+                            <li>Accurate in most cases</li>
+                        </ul>
+
                         <div class="pathfinder history grid type show-heuristic hide-group">
                             <div class="matrix">
                                 <div class="row">
@@ -485,6 +490,11 @@ function manhattan (xC, yC, xT, yT) {
                     <section>
                         <h2>Putting Everything Together</h2>
 
+                        <ul>
+                            <li>Total = Steps + Heuristic</li>
+                            <li>Click for interactive walkthrough</li>
+                        </ul>
+
                         <div class="pathfinder history grid type show-stats">
                             <div class="matrix">
                                 <div class="row">
@@ -554,7 +564,7 @@ function manhattan (xC, yC, xT, yT) {
                             <li>Using John Resig's <a href="http://ejohn.org/blog/simple-javascript-inheritance/">Simple JavaScript Inheritance</a><br/> for instances</li>
                         </ul>
 
-                        <h3>Primary Methods</h3>
+                        <h3>Method Overview</h3>
                         <ol>
                             <li>setMap</li>
                             <li>outOfBounds</li>
@@ -566,8 +576,9 @@ function manhattan (xC, yC, xT, yT) {
                         <h2>setMap</h2>
                         <ul style="margin-bottom: 20px;">
                             <li>Break map down to voxels</li>
+                            <li>Use a multi-dimensional array (usually 2D)</li>
                             <li>HTML/CSS users loop through data via jQuery</li>
-                            <li>Complex games require multiple maps (collision, entities, other)</li>
+                            <li>Complex games require looking at multiple maps (collision, entities, other)</li>
                         </ul>
 
                         <img src="assets/map/map-to-data.png" />
@@ -684,7 +695,7 @@ window.Map = window.Class.extend({
                             <li>Returns a completed path that can be navigated</li>
                         </ul>
 
-                        <h3>Primary Topics</h3>
+                        <h3>Topic Overview</h3>
                         <ol>
                             <li>Close commands</li>
                             <li>Open commands</li>
@@ -1020,6 +1031,7 @@ window.PathFinder = window.Class.extend({
                         <ul>
                             <li>JavaScript library: <a href="http://ashblue.github.io/pathfinding-platformer/">Pathfinding Platformer</a></li>
                             <li>Currently used for <a href="http://playadnc.com">A Dragon Named Coal's</a> companion system</li>
+                            <li>Trick to A* with gravity is figuring out where you can't move and ledge dropoffs</li>
                         </ul>
 
                         <img src="assets/gravity.png" width="400" />
@@ -1030,6 +1042,11 @@ window.PathFinder = window.Class.extend({
                         <h2>Clearance values</h2>
 
                         <p>For when moving characters takes up more than one tile</p>
+
+                        <ul>
+                            <li>Just a few lines for A*</li>
+                            <li>Requires an extra map of data</li>
+                        </ul>
 
                         <p style="text-align: center"><a href="https://aigamedev.com/open/tutorials/clearance-based-pathfinding/">Tutorial</a></p>
 
